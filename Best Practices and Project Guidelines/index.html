@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BBB</title>
+	</head>
+	<body>
+		<h1>Best Practices and Project Guidelines</h1>
+		<blockquote>
+			<p>All code in any code-base should look like a single person typed it, no matter how many people contributed. - <a href="https://github.com/rwaldron/idiomatic.js/">idiomatic.js</a>
+			</p>
+		</blockquote>
+		
+		<aside>
+			<nav>
+				<ul>
+					<li><a href="#general">General</a></li>
+					<li><a href="#html">HTML</a></li>
+					<li><a href="#css">CSS</a></li>
+					<li><a href="#javascript">Javascript</a></li>
+				</ul>
+			</nav>
+		</aside>
+
+		<section>
+			<!-- General Best practices -->
+			<h2 id="general">General</h2>
+
+			<p>Maintain Absolute consistency should be enforced by the team members throughout  the codebase</p>
+			<p>Code must be clear, readable and easy to understand.</p>
+			<p>Maintain proper indentation and spacing.</p>
+			<p>Use proper and meaningful naming conventions as per the language.</p>
+			<p>Maintain proper commenting.</p>
+			<p>Refactor</p>
+
+			<!-- HTML Best Practices -->
+			<h2 id="html">HTML</h2>
+			
+			<h3>Use proper Doctype</h3>
+			<p>Doctype is a must for every webpage. And it should be first thing in the page source above <code>&lt;html&gt;</code> and <strong>NOTHING</strong> should be above it, be any HTML markup, CSS rules, JS code or any comments. Otherwise, the browser will render the page in quirks mode and may cause some unexpected issues.</p>
+			<p>For HTML5, which is the current standard for web pages, use <code> &lt;!DOCTYPE html&gt;</code></p>
+			<p>Additionally, every page should have <code>&lt;html&gt;, &lt;head&gt;, &lt;body&gt; &amp; &lt;title&gt;</code> tags.</p>
+
+			<h3>Put CSS at the end of the <code>&lt;head&gt;</code> tag</h3>
+			<p>Putting CSS styles and external stylesheets in <code>&lt;head&gt;</code> makes the page load faster.</p>
+			
+			<h3>Put JS at the end of <code>&lt;body&gt;</code> tag</h3>
+			<p>Putting the external scripts in the end ensures that page rendering is not blocked due to loading of a script.</p>
+
+			
+			<h3>Make more use of semantic elements</h3>
+			<p>unordered list for list or menu items, <code>&lt;p&gt;</code> tag for info, div for wrapper</p>
+
+			<h3>Always use lower case for element name and attributes</h3>
+			<p>eg.</p>
+
+			<h3>Always use double quotes for attributes</h3>
+			eg. 
+
+			<h3>Choose a meaningful name for class, id or any data attribute. camelcase??</h3>
+			eg. 
+
+			<h3>Id should be unique in a page</h3>
+			<p>Same Id can't be used more than once in a page. Pay close attention if the markup using id is being iterated over.</p>
+			eg.
+
+			<h3>Always Close Your Tags</h3>
+			eg.
+
+			<h3>Minimize the use of inline style</h3>
+			<p>Avoid the use of inline styles. ???</p>
+			eg. 
+
+			<h3>Keep nesting depth to a minimum, don't overuse tags to nesting </h3>
+			eg.
+
+			<h3>Never nest a block element inside inline element</h3>
+			eg.
+
+			<h3><code>&lt;img&gt;</code> should have a alt attribute</h3>
+			eg.
+			
+			<h3>Drop type attribute in <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags. Drop </h3>
+
+			<h3>ALWAYS run your code through W3C validator</h3>
+
+			<h3>Keep your code <em>clean &amp; clear</em></h3>
+			<p>Strictly maintain proper indentation for nested elements. One indentation = 1 tab/4spaces, no more, no less.</p>
+			<p>Set your editor for this</p>
+			<p>Remove unwanted whitespaces/new lines.</p>
+			eg. 
+			
+			<h3>Use proper comments</h3>
+			<p>Comment your markup &amp; use JSP comments to keep page source clear of them</p>
+			eg. 
+
+			<!-- CSS Best Practices -->
+			<h2 id="css">CSS</h2>
+
+			<h3>Keep your code <em>clean &amp; clear</em></h3>
+			<p>Strictly maintain proper indentation and spacing for the selectors and their rules.</p>
+			<p>One indentation = 1 tab/4 spaces, no more, no less.</p>
+			<p>Remove unwanted whitespaces/new lines.</p>
+			eg. 
+
+			<h3>Avoid putting everything in a single line</h3>
+			<p>Writing each selectors and each declarations in separate lines promotes readability and makes it easier to debug.</p>
+
+			<h3>Make efficient use of selectors</h3>
+			<h4>Keep specificity to a minimum</h4>
+			<p>#id: 100, .class: 10 tag: 1 </p>
+			
+			<h4>Avoid using #id</h4>
+			<p>Id has a specificity of 100, so if one wants to override this selector, he/she is forced to use id again increasing the complexity and decreasing the performance.</p>
+
+			<h4>Avoid using !important</h4>
+			<p>Using !important is always a bad idea. Try increasing specificity to achieve the same result by adding classes or tags. Id should be introduced only if absolutely necessary.</p>
+			<p>For already developed project, !important can only be accepted if the property to be overridden has already !important in place. Although, one must always try to remove the !important from existing code as well if it will not cause any regression.</p>
+
+
+			<h3>Use shorthand properties whenever possible</h3>
+
+			
+			<h3>Use vendor prefix for newer CSS3 properties</h3>
+			<p>Adding vendor prefixes will support for a wide range of browsers and devices.</p>
+
+			<h3>Reuse styles from other rules</h3>
+			<p>Make use of certain global classes</p>
+			<p>Take advantage of frameworks such as Bootstrap</p>
+			<p>Decrease redundancy by merging selectors which have similar rules</p>
+
+			<h3>Reduce the number of image requests to the server</h3>
+			<p>Use sprites - add smaller images/icons in a sprite</p>
+			<p>Make sure an individual image request is sent only once per page.</p>
+
+
+			<!-- JS Best Practices -->
+			<h2 id="javascript">JS</h2>
+			
+			<h3>Keep your code <em>clean &amp; clear</em></h3>
+			<p>Strictly maintaining proper indentation and spacing helps to organize the code in a more readable manner.</p>
+			<p>One indentation = 1 tab/4 spaces, no more, no less.</p>
+			<p>Remove unwanted whitespaces/new lines.</p>
+
+			<h3>Follow proper naming conventions</h3>
+			<p>Always use camelCase for variables, identifiers, functions and objects and PascalCase for constructors</p>
+			<p>Names should be meaningful and easily understandable by others. Avoid using too long or too short names. </p>
+
+			<h3>Avoid using global variables</h3>
+			<p>Variables declared outside of a function are in global scope. </p>
+		</section>
+	</body>
+</html>
