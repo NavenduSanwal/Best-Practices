@@ -3,22 +3,35 @@ html, body {
   padding: 0;
 }
 blockquote {
-	text-align: center;
+  text-align: center;
 }
 blockquote p {
-	font: italic bold 24px Times;
+  font: italic bold 24px Times;
+}
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  overflow: hidden;
+  padding: 0 20px 0 320px;
+  width: 100%;
+}
+.container aside,
+.container section {
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
 }
 aside {
-	float: left;
-	height: 100%;
-	width: 20%;
+  background: #f1f1f1;
+  float: left;
+  margin-left: -320px;
+  width: 300px;
 }
 section {
-	float: right;
-	width: 80%;
+  float: right;
+  width: 100%;
 }
 aside nav   {
-	top: 20px;
+  top: 0px;
 }
 nav ul {
   list-style-type: none;
@@ -29,7 +42,7 @@ nav ul li {
   padding: 10px;
 }
 nav ul li a {
-  color: red;
+  color: #00f;
 }
 nav ul li a:hover {
   color: blue;
@@ -45,7 +58,7 @@ p {
   font-size: 16px;
 }
 section p {
-	margin: 3px 0;
+  margin: 3px 0;
 }
 
 .half {
@@ -53,32 +66,38 @@ section p {
   width: 44%;
 }
 .half:first-child {
-	border-right: 1px solid #000;
+  border-right: 1px solid #000;
 }
 .clear {
   clear: left;
 }
 
 .holder {
-	clear: both;
-	overflow: hidden;
-	padding: 20px 0;
+  clear: both;
+  overflow: hidden;
+  padding: 20px 0;
 }
 .holder code {
-	background-color: #ddd;
-	float: left;
-	white-space: pre-wrap;
-	width: 100%;
-	tab-size: 2;
-	-moz-tab-size: 2;
-	-o-tab-size: 2;
+  background-color: #ddd;
+  float: left;
+  white-space: pre-wrap;
+  width: 100%;
+  tab-size: 1;
+  -moz-tab-size: 1;
+  -o-tab-size: 1;
 }
-.holder code.bad {
-	background-color: #e8cdcd;
+.holder .bad code {
+  background-color: #e8cdcd;
 }
-.holder code.good {
-	background-color: #ded;
+.holder .good code {
+  background-color: #ded;
 }
 .holder code:first-child {
-	border-right: 1px solid #444;
+  border-right: 1px solid #444;
+}
+
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: table;
 }

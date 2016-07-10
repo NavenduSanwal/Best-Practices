@@ -3,6 +3,52 @@
 	<head>
 		<title>Best Practices</title>
 		<link rel="stylesheet" href="css/style.css">
+
+		<template id="code-example">
+			<style>
+				pre {
+					margin: 0;
+					overflow: hidden;
+					tab-size: 1;
+					-moz-tab-size: 1;
+					-o-tab-size: 1;
+				}
+				.holder code {
+					margin: 0;
+					overflow: hidden;
+					tab-size: 1;
+					-moz-tab-size: 1;
+					-o-tab-size: 1;
+					white-space: pre;
+					width: 100%;
+				}
+				.title {
+					background-color: #ddd;
+					color: #fff;
+					font: 14px Arial;
+					line-height: 25px;
+					margin: 0;
+					min-height: 25px;
+					padding: 0 20px;
+				}
+				.bad .title {
+					background-color: #ec7070;
+
+				}
+				.good .title {
+					background-color: #80d8b0;
+				}
+			</style>
+			<div class="half bad">
+				<p class="title"></p>
+				<code></code>
+			</div>
+			<div class="half good">
+				<p class="title"></p>
+				<code></code>
+			</div>
+			<div class="clear"></div>
+		</template>
 	</head>
 	<body>
 		<h1>Best Practices and Project Guidelines</h1>
@@ -11,259 +57,265 @@
 			</p>
 		</blockquote>
 		
-		<aside>
-			<nav>
+		<div class="container">
+			<aside>
+				<nav>
+					<ul>
+						<li>Table of Contents</li>
+						<li><a href="#general">General</a></li>
+						<li><a href="#html">HTML</a></li>
+						<li><a href="#css">CSS</a></li>
+						<li><a href="#javascript">Javascript</a></li>
+					</ul>
+				</nav>
+			</aside>
+
+			<section>
+				<!-- General Best practices -->
+				<h2 id="general">General</h2>
+
+				<p>Absolute consistency should be maintained throughout the codebase.</p>
+				<p>Code must be clear, readable and easy to understand.</p>
+				<p>Maintain proper indentation and spacing.</p>
+				<p>Maintain proper commenting.</p>
+				<p>Refactor</p>
+
+				<!-- HTML Best Practices -->
+				<h2 id="html">HTML</h2>
+				
+				<h3>Use proper Doctype</h3>
+				<p>Doctype is a must for every webpage. And it should be first thing in the page source above <code>&lt;html&gt;</code> and <strong>NOTHING</strong> should be above it, be any HTML markup, CSS rules, JS code or any comments. Otherwise, the browser will render the page in quirks mode and may cause some unexpected issues.</p>
+				<p>For HTML5, which is the current standard for web pages, use <code> &lt;!DOCTYPE html&gt;</code></p>
+				<p>Additionally, every page should have <code>&lt;html&gt;, &lt;head&gt;, &lt;body&gt; &amp; &lt;title&gt;</code> tags.</p>
+
+				<h3>Put CSS at the end of the <code>&lt;head&gt;</code> tag</h3>
+				<p>Putting CSS styles and external stylesheets in <code>&lt;head&gt;</code> makes the page load faster.</p>
+				
+				<h3>Put JS at the end of <code>&lt;body&gt;</code> tag</h3>
+				<p>Putting the external scripts in the end ensures that page rendering is not blocked due to loading of a script.</p>
+
+				
+				<h3>Make more use of semantic elements</h3>
+				<p>unordered list for list or menu items, <code>&lt;p&gt;</code> tag for info, div for wrapper</p>
+
+				<h3>Always use lower case for element name and attributes</h3>
+				<p>eg.</p>
+
+				<h3>Always use double quotes for attributes</h3>
+				eg. 
+
+				<h3>Choose a meaningful name for class, id or any data attribute. camelcase??</h3>
+				eg. 
+
+				<h3>Id should be unique in a page</h3>
+				<p>Same Id can't be used more than once in a page. Pay close attention if the markup using id is being iterated over.</p>
+				eg.
+
+				<h3>Always Close Your Tags</h3>
+				eg.
+
+				<h3>Minimize the use of inline style</h3>
+				<p>Avoid the use of inline styles. ???</p>
+				eg. 
+
+				<h3>Keep nesting depth to a minimum, don't overuse tags to nesting </h3>
+				eg.
+
+				<h3>Never nest a block element inside inline element</h3>
+				eg.
+
+				<h3><code>&lt;img&gt;</code> should have a alt attribute</h3>
+				eg.
+				
+				<h3>Drop type attribute from  <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags. Drop </h3>
+
+				<h3>ALWAYS run your code through W3C validator</h3>
+
+				<h3>Keep your code <em>clean &amp; clear</em></h3>
+				<p>Strictly maintain proper indentation for nested elements. One indentation = 1 tab/4spaces, no more, no less.</p>
+				<p>Set your editor for this</p>
+				<p>Remove unwanted whitespaces/new lines.</p>
+				eg. 
+				
+				<h3>Use proper comments</h3>
+				<p>Comment your markup &amp; use JSP comments to keep page source clear of them</p>
+				eg. 
+
+				<!-- CSS Best Practices -->
+				<h2 id="css">CSS</h2>
+
+				<h3>Keep your code <em>clean &amp; clear</em></h3>
+				<p>Strictly maintain proper indentation and spacing for the selectors and their rules.</p>
+				<p>One indentation = 1 tab/4 spaces, no more, no less.</p>
+				<p>Remove unwanted whitespaces/new lines.</p>
+				<div class="holder">
+					<code class="bad">
+						nav ul li {font-size:15px;font-weight: bold; }
+					</code>
+					<code class="good">
+						nav ul li {
+						  font-size: 15px;
+						  font-weight: bold;
+						}
+					</code>
+				</div>
+
+				<h3>Avoid putting everything in a single line</h3>
+				<p>Writing each selectors and each declarations in separate lines promotes readability and makes it easier to debug.</p>
+				<div class="holder">
+					<code class="bad">
+						nav ul li {font-size:15px;font-weight: bold; }
+					</code>
+					<code class="good">
+						nav ul li {
+						  font-size: 15px;
+						  font-weight: bold;
+						}
+					</code>
+				</div>
+
+				<h3>Make efficient use of selectors</h3>
+				<h4>Keep specificity to a minimum</h4>
+				<p>#id: 100, .class: 10 tag: 1 </p>
+				
+				<h4>Avoid using #id</h4>
+				<p>Id has a specificity of 100, so if one wants to override this selector, he/she is forced to use id again increasing the complexity and decreasing the performance.</p>
+
+				<h4>Avoid using !important</h4>
+				<p>Using !important is always a bad idea. Try increasing specificity to achieve the same result by adding classes or tags. Id should be introduced only if absolutely necessary.</p>
+				<p>For already developed project, !important can only be accepted if the property to be overridden has already !important in place. Although, one must always try to remove the !important from existing code as well if it will not cause any regression.</p>
+
+
+				<h3>Use shorthand properties whenever possible</h3>
+				<div class="holder">
+					<code class="bad">
+						p {
+							margin-top: 10px;
+							margin-right: 20px;
+							margin-bottom: 10px
+							margin-left: 20px;
+							padding: 5px 0 0 0;
+						}
+					</code>
+					<code class="good">
+						p {
+							margin: 10px 20px;
+							padding-top: 5px;
+						}
+					</code>
+				</div>
+
+				
+				<h3>Use vendor prefix for newer CSS3 properties</h3>
+				<p>Adding vendor prefixes will support for a wide range of browsers and devices.</p>
+
+				<h3>Reuse styles from other rules</h3>
+				<p>Make use of certain global classes</p>
+				<p>Take advantage of frameworks such as Bootstrap</p>
+				<p>Decrease redundancy by merging selectors which have similar rules</p>
+
+				<h3>Reduce the number of image requests to the server</h3>
+				<p>Use sprites - add smaller images/icons in a sprite</p>
+				<p>Make sure an individual image request is sent only once per page.</p>
+
+
+				<!-- JS Best Practices -->
+				<h2 id="javascript">JS</h2>
+				<h3> A. Structure</h3>
+				<h3>Keep your code <em>clean &amp; clear</em></h3>
+				<p>Strictly maintaining proper indentation and spacing helps to organize the code in a more readable manner.</p>
+				<p>One indentation = 1 tab/4 spaces, no more, no less.</p>
+				<p>Remove unwanted whitespaces/new lines.</p>
+
+				<h3>Follow proper naming conventions</h3>
+				<p>Names should be meaningful and easily understandable by others. Avoid using too long or too short names. </p>
+				<p>Always use camelCase for variables, identifiers, functions and objects and PascalCase for constructors</p>
+				<p>Name for a jQuery object should start with '$'.</p>
+				flagForSomethingCool == > someFlag
+				varToDoSomethingAwesome == > someVar
+				ref == > reference
+				isPLP == > isPlp
+
+
+				<h3>Don't take short-cut with syntax</h3>
+				<p>Don't omit the braces in <code>if-else, while, for </code> blocks.</p>
+				<p>Always end statements with a semi-colon. Don't put semi-colon at unnecessary positions, like after <code>if, for</code> blocks.</p>
+
+				<h3>B. Bad Practices and Better Design</h3>
+				<h3>Avoid using global variables</h3>
+				<p>Variables declared outside of a function are attached to the global scope. Additionally, variables used without decalring it first, i.e. without using <em>var</em> keyword, whether it is inside or outside any function makes it a global variable.</p>
+				<p>Global variables are extremely risky as they can used or modified by any part of the code or any third party's code, either intentionally or un-intentionally.</p>
+				<p>Always declare the variables locally by using <em>var</em> keyword. Also, namespacing, closures, self-executing immediate functions are helpful in resolving clashing.</p>
+
+				<h3>Proper use of var</h3>
+				<p>Decalre all of the variables at the starting of the functions and preferably assign some initial value. Hoisting?</p>
+				<p>Avoid redeclartions of the variables</p>
+				<p>Never declare variables inside a block</p>
+				<p>Single var vs multiple var statements</p>
+
+				<h3>Always use === instead of ==</h3>
+				<p>Type checking</p>
+				<p>string
+					- boolen
+					- attention on number and stirng
+					- null undefined</p>	
+
+				<h3>eval() === evil()</h3>
+				<p>Never use eval() as it execute the string raising some security issues.</p>
+
+				<h3>Never pass string in <code>setTimeout</code> or <code>setInterval</code></h3>
+				<p>Passing string in <code>setTimeout</code> or <code>setInterval</code> works in the sense as eval(). Always pass function as the parameter.</p>
+
+				<h3>Bettern assignment</h3>
+				<p>Use shorthand variable decalration(term??) wherever possible. Avoid using the new operator for primitive types, viz. String, Boolean, Object, etc.</p>
+				<code>var obj = {};
+					var arr = [];
+					var val = val || 0;
+				</code>
+				<p>Use ternary operator for assignment.</p>
+
+				<h3>C. Performance</h3>
+				<p>Major pain areas of performance impact</p>
 				<ul>
-					<li><a href="#general">General</a></li>
-					<li><a href="#html">HTML</a></li>
-					<li><a href="#css">CSS</a></li>
-					<li><a href="#javascript">Javascript</a></li>
+					<li>Page Rendering</li>
+					<li>Looping</li>
+					<li>DOM manipulation</li>
+					<li>Event binding/firing</li>
+					<li>HTTP requests</li>
 				</ul>
-			</nav>
-		</aside>
 
-		<section>
-			<!-- General Best practices -->
-			<h2 id="general">General</h2>
+				<h3>Looping</h3>
+				<p>Avoid looping where it is not necessary</p>
+				<p>Avoid doing repetitive/heavy tasks that can be done outside the loop.</p>
 
-			<p>Absolute consistency should be maintained throughout the codebase.</p>
-			<p>Code must be clear, readable and easy to understand.</p>
-			<p>Maintain proper indentation and spacing.</p>
-			<p>Maintain proper commenting.</p>
-			<p>Refactor</p>
+				<h3>DOM Caching</h3>
+				<p>DOM manipulation is a heavy task and has a lot of performance impact. While selecting some DOM node which can be used later, make sure to <em>Cache</em> it. This will save time to re-select the DOM.Also, cache wisely.</p>
+				<p>Optimize the use of selectors. Start with id attribute if possible and then move your way down to class, tag and pseudo selectors.</p>
+				<p>Multiple id selector in a single query is useless. Also, query the id selector alone and chain other selectors .</p>
 
-			<!-- HTML Best Practices -->
-			<h2 id="html">HTML</h2>
-			
-			<h3>Use proper Doctype</h3>
-			<p>Doctype is a must for every webpage. And it should be first thing in the page source above <code>&lt;html&gt;</code> and <strong>NOTHING</strong> should be above it, be any HTML markup, CSS rules, JS code or any comments. Otherwise, the browser will render the page in quirks mode and may cause some unexpected issues.</p>
-			<p>For HTML5, which is the current standard for web pages, use <code> &lt;!DOCTYPE html&gt;</code></p>
-			<p>Additionally, every page should have <code>&lt;html&gt;, &lt;head&gt;, &lt;body&gt; &amp; &lt;title&gt;</code> tags.</p>
+				<h3>Event Binding</h3>
+				<p>jQuery stacks event binding. Event will fire for each of the stacked event handler.</p>
+				<p>Event binding should not be done in a loop, function or callbacks. As each time the function will be called event binding will be stacked.</p>
 
-			<h3>Put CSS at the end of the <code>&lt;head&gt;</code> tag</h3>
-			<p>Putting CSS styles and external stylesheets in <code>&lt;head&gt;</code> makes the page load faster.</p>
-			
-			<h3>Put JS at the end of <code>&lt;body&gt;</code> tag</h3>
-			<p>Putting the external scripts in the end ensures that page rendering is not blocked due to loading of a script.</p>
+				<h3>HTTP requests</h3>
+				<p>HTTP requests should be kept to a minimum as they have overhead of moving back and forth to server. This includes number of images, sttylesheets, js files and ajax calls.</p>
+				<p>Compressing and Concating css and js files, use of sprites should be done.</p>
+				<p>Browsers also helps by caching these files.</p>
 
-			
-			<h3>Make more use of semantic elements</h3>
-			<p>unordered list for list or menu items, <code>&lt;p&gt;</code> tag for info, div for wrapper</p>
+				<h3>Reduce Redundant code</h3>
+				<p>Modularize your code. Try to break a large function into multiple smaller functions.</p>
+				<p>Try to bundle similar set of instruction into a function which can be used on later wherever needed.</p>
+				<p>Take out similar code out of <code>if-else</code> block.</p>
 
-			<h3>Always use lower case for element name and attributes</h3>
-			<p>eg.</p>
-
-			<h3>Always use double quotes for attributes</h3>
-			eg. 
-
-			<h3>Choose a meaningful name for class, id or any data attribute. camelcase??</h3>
-			eg. 
-
-			<h3>Id should be unique in a page</h3>
-			<p>Same Id can't be used more than once in a page. Pay close attention if the markup using id is being iterated over.</p>
-			eg.
-
-			<h3>Always Close Your Tags</h3>
-			eg.
-
-			<h3>Minimize the use of inline style</h3>
-			<p>Avoid the use of inline styles. ???</p>
-			eg. 
-
-			<h3>Keep nesting depth to a minimum, don't overuse tags to nesting </h3>
-			eg.
-
-			<h3>Never nest a block element inside inline element</h3>
-			eg.
-
-			<h3><code>&lt;img&gt;</code> should have a alt attribute</h3>
-			eg.
-			
-			<h3>Drop type attribute from  <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags. Drop </h3>
-
-			<h3>ALWAYS run your code through W3C validator</h3>
-
-			<h3>Keep your code <em>clean &amp; clear</em></h3>
-			<p>Strictly maintain proper indentation for nested elements. One indentation = 1 tab/4spaces, no more, no less.</p>
-			<p>Set your editor for this</p>
-			<p>Remove unwanted whitespaces/new lines.</p>
-			eg. 
-			
-			<h3>Use proper comments</h3>
-			<p>Comment your markup &amp; use JSP comments to keep page source clear of them</p>
-			eg. 
-
-			<!-- CSS Best Practices -->
-			<h2 id="css">CSS</h2>
-
-			<h3>Keep your code <em>clean &amp; clear</em></h3>
-			<p>Strictly maintain proper indentation and spacing for the selectors and their rules.</p>
-			<p>One indentation = 1 tab/4 spaces, no more, no less.</p>
-			<p>Remove unwanted whitespaces/new lines.</p>
-			eg. 
-
-			<h3>Avoid putting everything in a single line</h3>
-			<p>Writing each selectors and each declarations in separate lines promotes readability and makes it easier to debug.</p>
-
-			<h3>Make efficient use of selectors</h3>
-			<h4>Keep specificity to a minimum</h4>
-			<p>#id: 100, .class: 10 tag: 1 </p>
-			
-			<h4>Avoid using #id</h4>
-			<p>Id has a specificity of 100, so if one wants to override this selector, he/she is forced to use id again increasing the complexity and decreasing the performance.</p>
-
-			<h4>Avoid using !important</h4>
-			<p>Using !important is always a bad idea. Try increasing specificity to achieve the same result by adding classes or tags. Id should be introduced only if absolutely necessary.</p>
-			<p>For already developed project, !important can only be accepted if the property to be overridden has already !important in place. Although, one must always try to remove the !important from existing code as well if it will not cause any regression.</p>
-
-
-			<h3>Use shorthand properties whenever possible</h3>
-
-			
-			<h3>Use vendor prefix for newer CSS3 properties</h3>
-			<p>Adding vendor prefixes will support for a wide range of browsers and devices.</p>
-
-			<h3>Reuse styles from other rules</h3>
-			<p>Make use of certain global classes</p>
-			<p>Take advantage of frameworks such as Bootstrap</p>
-			<p>Decrease redundancy by merging selectors which have similar rules</p>
-
-			<h3>Reduce the number of image requests to the server</h3>
-			<p>Use sprites - add smaller images/icons in a sprite</p>
-			<p>Make sure an individual image request is sent only once per page.</p>
-
-
-			<!-- JS Best Practices -->
-			<h2 id="javascript">JS</h2>
-			<h3> A. Structure</h3>
-			<h3>Keep your code <em>clean &amp; clear</em></h3>
-			<p>Strictly maintaining proper indentation and spacing helps to organize the code in a more readable manner.</p>
-			<p>One indentation = 1 tab/4 spaces, no more, no less.</p>
-			<p>Remove unwanted whitespaces/new lines.</p>
-
-			<h3>Follow proper naming conventions</h3>
-			<p>Names should be meaningful and easily understandable by others. Avoid using too long or too short names. </p>
-			<p>Always use camelCase for variables, identifiers, functions and objects and PascalCase for constructors</p>
-			<p>Name for a jQuery object should start with '$'.</p>
-			flagForSomethingCool == > someFlag
-			varToDoSomethingAwesome == > someVar
-			ref == > reference
-			isPLP == > isPlp
-
-
-			<h3>Don't take short-cut with syntax</h3>
-			<p>Don't omit the braces in <code>if-else, while, for </code> blocks.</p>
-			<p>Always end statements with a semi-colon. Don't put semi-colon at unnecessary positions, like after <code>if, for</code> blocks.</p>
-
-			<h3>B. Bad Practices and Better Design</h3>
-			<h3>Avoid using global variables</h3>
-			<p>Variables declared outside of a function are attached to the global scope. Additionally, variables used without decalring it first, i.e. without using <em>var</em> keyword, whether it is inside or outside any function makes it a global variable.</p>
-			<p>Global variables are extremely risky as they can used or modified by any part of the code or any third party's code, either intentionally or un-intentionally.</p>
-			<p>Always declare the variables locally by using <em>var</em> keyword. Also, namespacing, closures, self-executing immediate functions are helpful in resolving clashing.</p>
-
-			<h3>Proper use of var</h3>
-			<p>Decalre all of the variables at the starting of the functions and preferably assign some initial value. Hoisting?</p>
-			<p>Avoid redeclartions of the variables</p>
-			<p>Never declare variables inside a block</p>
-			<p>Single var vs multiple var statements</p>
-
-			<h3>Always use === instead of ==</h3>
-			<p>Type checking</p>
-			<p>string
-				- boolen
-				- attention on number and stirng
-				- null undefined</p>	
-
-			<h3>eval() === evil()</h3>
-			<p>Never use eval() as it execute the string raising some security issues.</p>
-
-			<h3>Never pass string in <code>setTimeout</code> or <code>setInterval</code></h3>
-			<p>Passing string in <code>setTimeout</code> or <code>setInterval</code> works in the sense as eval(). Always pass function as the parameter.</p>
-
-			<h3>Bettern assignment</h3>
-			<p>Use shorthand variable decalration(term??) wherever possible. Avoid using the new operator for primitive types, viz. String, Boolean, Object, etc.</p>
-			<code>var obj = {};
-				var arr = [];
-				var val = val || 0;
-			</code>
-			<p>Use ternary operator for assignment.</p>
-
-			<h3>C. Performance</h3>
-			<p>Major pain areas of performance impact</p>
-			<ul>
-				<li>Page Rendering</li>
-				<li>Looping</li>
-				<li>DOM manipulation</li>
-				<li>Event binding/firing</li>
-				<li>HTTP requests</li>
-			</ul>
-
-			<h3>Looping</h3>
-			<p>Avoid looping where it is not necessary</p>
-			<p>Avoid doing repetitive/heavy tasks that can be done outside the loop.</p>
-
-			<h3>DOM Caching</h3>
-			<p>DOM manipulation is a heavy task and has a lot of performance impact. While selecting some DOM node which can be used later, make sure to <em>Cache</em> it. This will save time to re-select the DOM.Also, cache wisely.</p>
-			<p>Optimize the use of selectors. Start with id attribute if possible and then move your way down to class, tag and pseudo selectors.</p>
-			<p>Multiple id selector in a single query is useless. Also, query the id selector alone and chain other selectors .</p>
-
-			<h3>Event Binding</h3>
-			<p>jQuery stacks event binding. Event will fire for each of the stacked event handler.</p>
-			<p>Event binding should not be done in a loop, function or callbacks. As each time the function will be called event binding will be stacked.</p>
-
-			<h3>HTTP requests</h3>
-			<p>HTTP requests should be kept to a minimum as they have overhead of moving back and forth to server. This includes number of images, sttylesheets, js files and ajax calls.</p>
-			<p>Compressing and Concating css and js files, use of sprites should be done.</p>
-			<p>Browsers also helps by caching these files.</p>
-
-			<h3>Reduce Redundant code</h3>
-			<p>Modularize your code. Try to break a large function into multiple smaller functions.</p>
-			<p>Try to bundle similar set of instruction into a function which can be used on later wherever needed.</p>
-			<p>Take out similar code out of <code>if-else</code> block.</p>
-
-			<h3>Misc Common errors</h3>
-			<h4>Truthy/Falsy Values: </h4>
-			<p>Beware of the data type of variables you are doing operation on.</p>
-			<code> typeof always return a string, .val() returns a string, .is(':checked') return boolean ,. length</code>
-			<h4>Check for possible data issues.</h4>
-			<h4>Use parseInt or pasrseFloat while fetching numbers from DOM or ajax and some arithmatic operation is intended on these values. Use typeof to reduce error.</h4>
-			<h4>window.load vs $(window).load()</h4>
-
-			
-
-
-
-
-
-
-			<div class="holder">
-				<div class="half">
-					<p>SCSS (Sassy CSS): uses braces and semicolons</p>
-						<code>
-							p {
-							    margin: 0;
-							    padding: 0;
-
-							    a {
-						        	font-size: 10px;
-							    }
-							}
-						</code>
-				</div>
-				<div class="half">
-					<p>SASS: uses indentations and newlines</p>
-						<code>
-							p
-							    margin: 0
-							    padding: 0
-
-							    a
-							        font-size: 10px
-						</code>
-				</div>
-				<div class="clear"></div>
-			</div>
-		</section>
+				<h3>Misc Common errors</h3>
+				<h4>Truthy/Falsy Values: </h4>
+				<p>Beware of the data type of variables you are doing operation on.</p>
+				<code> typeof always return a string, .val() returns a string, .is(':checked') return boolean ,. length</code>
+				<h4>Check for possible data issues.</h4>
+				<h4>Use parseInt or pasrseFloat while fetching numbers from DOM or ajax and some arithmatic operation is intended on these values. Use typeof to reduce error.</h4>
+				<h4>window.load vs $(window).load()</h4>
+			</section>
+		</div>
 
 		<script src="js/global.js"></script>
 
