@@ -1,0 +1,84 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+blockquote {
+	text-align: center;
+}
+blockquote p {
+	font: italic bold 24px Times;
+}
+aside {
+	float: left;
+	height: 100%;
+	width: 20%;
+}
+section {
+	float: right;
+	width: 80%;
+}
+aside nav   {
+	top: 20px;
+}
+nav ul {
+  list-style-type: none;
+}
+nav ul li {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+}
+nav ul li a {
+  color: red;
+}
+nav ul li a:hover {
+  color: blue;
+}
+
+h1 {
+  text-align: center;
+}
+h2 {
+  color: blue;
+}
+p {
+  font-size: 16px;
+}
+section p {
+	margin: 3px 0;
+}
+
+.half {
+  float: left;
+  width: 44%;
+}
+.half:first-child {
+	border-right: 1px solid #000;
+}
+.clear {
+  clear: left;
+}
+
+.holder {
+	clear: both;
+	overflow: hidden;
+	padding: 20px 0;
+}
+.holder code {
+	background-color: #ddd;
+	float: left;
+	white-space: pre-wrap;
+	width: 100%;
+	tab-size: 2;
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+}
+.holder code.bad {
+	background-color: #e8cdcd;
+}
+.holder code.good {
+	background-color: #ded;
+}
+.holder code:first-child {
+	border-right: 1px solid #444;
+}
