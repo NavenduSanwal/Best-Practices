@@ -1,45 +1,54 @@
+
+/* Base */
 html, body {
   margin: 0;
   padding: 0;
 }
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.table {
+  border-collapse: separate;
+  display: table;
+}
+.row {
+  display: table-row;
+}
+.col {
+  display: table-cell;
+  padding: 20px;
+}
+
+
 blockquote {
   text-align: center;
 }
 blockquote p {
   font: italic bold 24px Times;
 }
-.container {
-  margin: 0 auto;
-  max-width: 1000px;
-  overflow: hidden;
-  padding: 0 20px 0 320px;
-  width: 100%;
-}
-.container aside,
-.container section {
-  margin-bottom: -99999px;
-  padding-bottom: 99999px;
-}
-aside {
+
+.container aside {
   background: #f1f1f1;
-  float: left;
-  margin-left: -320px;
   width: 300px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-section {
-  float: right;
-  width: 100%;
-}
-aside nav   {
+
+aside nav {
   top: 0px;
 }
 nav ul {
   list-style-type: none;
+  max-width: 200px;
 }
 nav ul li {
   font-size: 15px;
   font-weight: bold;
   padding: 10px;
+  word-wrap: break-word;
 }
 nav ul li a {
   color: #00f;
@@ -72,7 +81,7 @@ section p {
   clear: left;
 }
 
-.holder {
+/* .holder {
   clear: both;
   overflow: hidden;
   padding: 20px 0;
@@ -94,10 +103,10 @@ section p {
 }
 .holder code:first-child {
   border-right: 1px solid #444;
-}
+} */
 
-.clearfix:after {
-  clear: both;
-  content: "";
-  display: table;
+.sin {
+  background-color: #ec7070;
+  color: #fff;
+  padding: 10px;
 }
