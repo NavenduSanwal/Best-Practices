@@ -2,5 +2,5 @@
 
 Documenting some of the best practices for HTML, CSS and Javascript.
 
-It also list the project guidelines and some of the common that can be seen in a project.
+It also list the project guidelines and some of the common mistakes that can be seen in a project.
 
