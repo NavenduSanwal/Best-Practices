@@ -1,15 +1,15 @@
 var MYAPP = MYAPP || {}; 
-
+MYAPP.menu = document.getElementsByTagName('nav');
 
 
 /*
  * Keep Table of Contents position fixed on scroll
  */
 window.addEventListener('scroll', function() {
-	if (window.scrollY > 150 || window.pageYOffset > 150) {
-		document.getElementsByTagName('nav')[0].style.position = 'fixed';
+	if (window.innerWidth > 768 && (window.scrollY > 150 || window.pageYOffset > 150)) {
+		MYAPP.menu[0].classList.add('posFixed');
 	} else {
-		document.getElementsByTagName('nav')[0].style.position = '';
+		MYAPP.menu[0].classList.remove('posFixed');
 	}
 });
 
@@ -89,11 +89,23 @@ codeProto.createdCallback = function() {
 	shadow.appendChild(clone);
 	//this.innerHTML = '';
 	//
+	// line numbers
+	// syntax highlighter
+	// no support for template
+	// remove whitespace
+	// dots
 	
 
-	this.addEventListener('click', function() {
+	this.addEventListener('dblclick', function() {
 		console.log('thanks');
-	});
+		var dots = this.querySelectorAll('.dot'),
+			len = dots.length || 0,
+			i = 0;
+
+		for (; i < len; i++) {
+			dots[i].classList.toggle('invisible');
+		}
+ 	});
 };
 
 var codeSnippet = document.registerElement('code-block', {
