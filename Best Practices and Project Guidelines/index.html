@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Best Practices</title>
+		<link rel="stylesheet" href="css/style.css">
+
+		<template id="code-example">
+			<style>
+
+				pre {
+					margin: 0;
+					overflow: hidden;
+					tab-size: 1;
+					-moz-tab-size: 1;
+					-o-tab-size: 1;
+				}
+				figure {
+					margin: 0;
+				}
+				.holder {
+				  clear: both;
+				  overflow: hidden;
+				  padding: 20px 0;
+				}
+				.holder code {
+					background-color: #ddd;
+					margin: 0;
+					float: left;
+					/* overflow: hidden; */
+					tab-size: 2;
+					-moz-tab-size: 2;
+					-o-tab-size: 2;
+					white-space: pre;
+					width: 100%;
+				}
+				.half {
+				  float: left;
+				  overflow-x: auto;
+				  width: 49%;
+				}
+				.bad {
+				  border-right: 1px solid #000;
+				}
+				.good {
+				  border-left: 1px solid #000;
+				  margin-left: -1px;
+				}
+				.title {
+					background-color: #ddd;
+					color: #fff;
+					font: 14px Arial;
+					line-height: 25px;
+					margin: 0;
+					min-height: 25px;
+					padding: 0 20px;
+					/* width: 100%; */
+				}
+				.bad .title {
+					background-color: #ec7070;
+
+				}
+				.good .title {
+					background-color: #80d8b0;
+				}
+				.holder .bad code, .holder .bad {
+				  background-color: #e8cdcd;
+				}
+				.holder .good code, .holder .good {
+				  background-color: #ded;
+				}
+				.holder code:first-child {
+				  border-right: 1px solid #444;
+				}
+			</style>
+			<div class="holder">
+			<figure class="half bad">
+				<figcaption class="title"></figcaption>
+				<code><content select=".bad"></content></code>
+			</figure>
+			<figure class="half good">
+				<figcaption class="title"></figcaption>
+				<code><content select=".good"></content></code>
+			</figure>
+			<div class="clear"></div>
+			</div>
+		</template>
+	</head>
+	<body>       
+		<h1>Best Practices and Project Guidelines</h1>
+		<blockquote>
+			<p>All code in any code-base should look like a single person typed it, no matter how many people contributed. - <a href="https://github.com/rwaldron/idiomatic.js/">idiomatic.js</a>
+			</p>
+		</blockquote>
+		
+		<div class="container table">
+			<div class="row">
+				<aside class="col">
+					<nav>
+						<ul>
+							<li>Table of Contents</li>
+							<li><a href="#general">General</a></li>
+							<li><a href="#html">HTML</a></li>
+							<li><a href="#css">CSS</a></li>
+							<li><a href="#javascript">Javascript</a></li>
+							<li><a href="#references">References</a></li>
+						</ul>
+					</nav>
+				</aside>
+
+				<section class="col">
+					<!-- General Best practices -->
+					<h2 id="general">General</h2>
+
+					<p>Absolute consistency should be maintained throughout the codebase.</p>
+					<p>Code must be clear, readable and easy to understand.</p>
+					<p>Maintain proper indentation and spacing.</p>
+					<p>Maintain proper commenting.</p>
+					<p>Refactor</p>
+
+					<!-- HTML Best Practices -->
+					<h2 id="html">HTML</h2>
+					
+					<h3>Use proper Doctype</h3>
+					<p>Doctype is a must for every webpage. And it should be first thing in the page source above <code>&lt;html&gt;</code> and <strong>NOTHING</strong> should be above it, be any HTML markup, CSS rules, JS code or any comments. Otherwise, the browser will render the page in quirks mode and may cause some unexpected issues.</p>
+					<p>For HTML5, which is the current standard for web pages, use <code> &lt;!DOCTYPE html&gt;</code></p>
+					<p>Additionally, every page should have <code>&lt;html&gt;, &lt;head&gt;, &lt;body&gt; &amp; &lt;title&gt;</code> tags.</p>
+<code-block>
+	<code class="bad" title="bad bad">
+		&lt;!-- This comment is appearing before doctype --&gt;
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;!-- Title is missing here --&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;p&gt;The &lt;head&gt; tag doesn't contain &lt;title&gt; element.&lt;/p&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+	<code class="good">
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;title&gt;Proper use of Doctype and HTML elements&lt;/title&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;p&gt;Doctype should be the first tag in any webpage.&lt;/p&gt;
+				&lt;p&gt;Always give a nice title for your page.&lt;/p&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+</code-block>
+
+					<h3>Keep your code <em>clean &amp; clear</em></h3>
+					<p>Strictly maintain proper indentation for nested elements. One indentation = 1 tab/4spaces, no more, no less.</p>
+					<p>Remove unwanted whitespaces/new lines.</p>
+<code-block>
+	<code class="bad" title="bad bad">
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+		&lt;title&gt;Clean Code&lt;/title&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+
+
+						&lt;h1&gt;The heading&lt;/h1&gt;
+
+
+
+				&lt;ul&gt;
+				&lt;li&gt;Item 1
+				&lt;/li&gt;
+													&lt;li&gt;
+												Item 2
+														&lt;/li&gt;
+			&lt;/ul&gt;
+
+					   &lt;form id="myForm"&gt;
+						  &lt;input type="text" id="name"
+							 class="col-6" name="name"&gt;
+							 &lt;input type="text" id="age"
+							 class="col-6" name="age"&gt;
+						   &lt;/form&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+	<code class="good">
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;title&gt;Clean Code&lt;/title&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;h1&gt;The heading&lt;/h1&gt;
+
+				&lt;ul&gt;
+					&lt;li&gt;Item 1&lt;/li&gt;
+					&lt;li&gt;Item 2&lt;/li&gt;
+				&lt;/ul&gt;
+
+				&lt;form id="myForm"&gt;
+					&lt;input type="text" id="name" class="col-6" name="name"&gt;
+					&lt;input type="text" id="age" class="col-6" name="age"&gt;
+				&lt;/form&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+</code-block>
+					
+					<h3>Add comments</h3>
+					<p>Use of proper comments allows for better maintainability.</p>
+					<p>Use JSP comments to keep page source clear of the comments.</p>
+<code-block>
+	<code class="bad" title="bad bad">
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;title&gt;Comments&lt;/title&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;h1&gt;The heading&lt;/h1&gt;
+
+				&lt;ul&gt;
+					&lt;li&gt;Item 1&lt;/li&gt;
+					&lt;li&gt;Item 2&lt;/li&gt;
+				&lt;/ul&gt;
+
+				&lt;form id="myForm"&gt;
+					&lt;input type="text" id="name" class="col-6" name="name"&gt;
+					&lt;!-- FIX FOR ISSUE-xxx --&gt;
+					&lt;input type="text" id="age" class="col-6" name="age"&gt;
+				&lt;/form&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+	<code class="good">
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;title&gt;Comments&lt;/title&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;h1&gt;The heading&lt;/h1&gt;
+
+				&lt;!-- Item List --&gt;
+				&lt;ul&gt;
+					&lt;li&gt;Item 1&lt;/li&gt;
+					&lt;li&gt;Item 2&lt;/li&gt;
+				&lt;/ul&gt;
+
+				&lt;!-- Personal Info form --&gt;
+				&lt;form id="myForm"&gt;
+					&lt;input type="text" id="name" class="col-6" name="name"&gt;
+					&lt;%-- FIX FOR ISSUE-xxx --%&gt;
+					&lt;input type="text" id="age" class="col-6" name="age"&gt;
+				&lt;/form&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+</code-block>
+
+
+					<h3>Put CSS at the end of the <code>&lt;head&gt;</code> tag</h3>
+					<p>Putting CSS styles and external stylesheets in <code>&lt;head&gt;</code> makes the page load faster.</p>
+<code-block>
+	<code class="bad">
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;title&gt;Stylesheets should be in head&lt;/title&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;link rel="stylesheet" href="css/style.css"&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+	<code class="good">
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;title&gt;Stylesheets should be in head&lt;/title&gt;
+				&lt;link rel="stylesheet" href="css/style.css"&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+</code-block>
+					
+					<h3>Put JS at the end of <code>&lt;body&gt;</code> tag</h3>
+					<p>Putting the external scripts in the end ensures that page rendering is not blocked due to loading of a script.</p>
+<code-block>
+	<code class="bad">
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;title&gt;Scripts should be at the end of body&lt;/title&gt;
+				&lt;script src="js/script.js"&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;script src="js/plugin.js"&gt;
+				&lt;p&gt;This para will render only after the plugin.js is downloaded.&lt;/p&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+	<code class="good">
+		&lt;!DOCTYPE html&gt;
+		&lt;html&gt;
+			&lt;head&gt;
+				&lt;title&gt;Scripts should be at the end of body&lt;/title&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				&lt;p&gt;What should be the sequence of your scripts?&lt;/p&gt;
+				&lt;script src="js/plugin.js"&gt;
+				&lt;script src="js/script.js"&gt;
+			&lt;/body&gt;
+		&lt;/html&gt;
+	</code>
+</code-block>
+
+					<!-- <h3>Drop type attribute from  <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags. Drop </h3> -->
+					
+					<h3>Make more use of semantic elements</h3>
+					<p>Markup should be framed with semantic elements </p>
+<code-block>
+	<code class="bad" title="bad bad">
+		&lt;div&gt;
+			&lt;a href="#"&gt;List item 1&lt;/a&gt;
+			&lt;a href="#"&gt;List item 2&lt;/a&gt;
+			&lt;a href="#"&gt;List item 3&lt;/a&gt;
+		&lt;/div&gt;
+
+
+		&lt;div&gt;This is some text.&lt;/div&gt;
+
+
+		&lt;div class="imageWrapper"&gt;
+			&lt;p&gt;Title for the image&lt;/p&gt;
+			&lt;img alt="random image" src="random.png"&gt;
+		&lt;/div&gt;
+	</code>
+	<code class="good">
+		&lt;ul&gt;
+			&lt;li&gt;&lt;a href="#"&gt;List item 1&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="#"&gt;List item 2&lt;/a&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;a href="#"&gt;List item 3&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+
+
+		&lt;p&gt;This is some text.&lt;/p&gt;
+
+
+		&lt;figure class="imageWrapper"&gt;
+			&lt;figcaption&gt;Title for the image&lt;/figcaption&gt;
+			&lt;img alt="random image" src="random.png"&gt;
+		&lt;/figure&gt;
+	</code>
+</code-block>
+
+					<h3>Properly use element and attributes names</h3>
+					<p>Always use lower case for element name and attributes.</p>
+					<p>Always use double quotes for attributes.</p>
+<code-block>
+	<code class="bad">
+		&lt;DIV&gt;
+			&lt;P CLASS="label"&gt;Element &amp; attributes names must be in lowercase.&lt;/P&gt;
+			&lt;A href = '/link' class=btn&gt;Use double quotes only as the standard&lt;/A&gt;
+		&lt;/DIV&gt;
+	</code>
+	<code class="good">
+		&lt;div&gt;
+			&lt;p class="label"&gt;Element &amp; attributes names must be in lowercase.&lt;/p&gt;
+			&lt;a href="/link" class="btn"&gt;Use double quotes only as the standard&lt;/a&gt;
+		&lt;/div&gt;
+	</code>
+</code-block>
+
+					<h3>Always Close Tags</h3>
+					<p>Modern browsers closes any stray open tag. This is good if you forget end a tag there, but it will cause issues if that tag is prematurely closed moving the elements after that out of the wrapper. So, it is better to always close the tags.</p>
+					<p>Also, the tags must be closed in the correct order.</p>
+<code-block>
+	<code class="bad">
+		&lt;div&gt;
+			First Div starts
+			&lt;p&gt;Always close your tags.
+			&lt;div&gt;
+				&lt;div&gt;Second Div starts
+			&lt;/div&gt;
+		&lt;/div&gt;
+	</code>
+	<code class="good">
+		&lt;div&gt;
+			First Div starts
+			&lt;p&gt;Always close your tags.&lt;p/&gt;
+			&lt;div&gt;
+				&lt;div&gt;Second Div starts&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	</code>
+</code-block>
+
+					<h3>Attribute id <em>MUST</em> be unique in a page</h3>
+					<p>Same Id can't be used more than once in a page. Pay close attention if the markup using id is being iterated over.</p>
+<code-block>
+	<code class="bad">
+		&lt;p id="para"&gt;This a paragraph.&lt;/p&gt;
+		&lt;p id="para"&gt;This an another paragraph.&lt;/p&gt;
+	</code>
+	<code class="good">
+		&lt;p id="para1"&gt;This a paragraph.&lt;/p&gt;
+		&lt;p id="para2"&gt;This an another paragraph.&lt;/p&gt;
+	</code>
+</code-block>
+
+					<h3>Choose a meaningful name for id, class or any data attribute</h3>
+					<p>Should use camecase or not??</p>
+<code-block>
+	<code class="bad">
+		&lt;p id="para1"&gt;This a paragraph.&lt;/p&gt;
+		&lt;p id="para2"&gt;This an another paragraph.&lt;/p&gt;
+	</code>
+	<code class="good">
+		&lt;p id="someLabel"&gt;This a paragraph.&lt;/p&gt;
+		&lt;p id="anotherLabel"&gt;This an another paragraph.&lt;/p&gt;
+	</code>
+</code-block>
+
+					<h3><code>&lt;img&gt;</code> should always have a alt attribute</h3>
+					<p>It will work as sort of a backup text when an image can not be loaded.</p>
+<code-block>
+	<code class="bad">
+		&lt;img src="item.png"&gt;
+	</code>
+	<code class="good">
+		&lt;img src="item.png" alt="item image"&gt;
+	</code>
+</code-block>
+
+					<h3>Minimize the use of inline styles and scripts</h3>
+					<p>Avoid the use of inline styles as it is difficult to override the style via CSS.</p>
+					<p>Avoid inline scripts to keep the markup free of any logic. Put the JS in script tag or better in external files.</p>
+<code-block>
+	<code class="bad">
+		&lt;p style="color: red; font-size: 15px;"&gt;This is a <br> paragraph.&lt;/p&gt;
+
+		&lt;input id="submit" type="submit" onclick="submitForm()"&gt;
+	</code>
+	<code class="good">
+		&lt;p class="label"&gt;This is a paragraph.&lt;/p&gt;
+
+		&lt;input id="submit" type="submit"&gt;
+
+		&lt;script&gt;
+			document.getElementById('submit')
+				.addEventListener('click', submitForm);
+		&lt;/script&gt;
+	</code>
+</code-block>
+					
+					<h3>Validate the place of the elements in the markup</h3>
+					<p>Block element never go inside an inline element.</p>
+					<p>Only <code>li</code> should be the immediate child of <code>ul</code></p>
+<code-block>
+	<code class="bad">
+		&lt;span&gt;
+			&lt;div&gt;Block element in an inline element is wrong.&lt;/div&gt;
+		&lt;/span&gt;
+
+		&lt;ul&gt;
+			&lt;div&gt;Item 1 (div is not allowed as the child of ul)&lt;/div&gt;
+			&lt;li&gt;Item 2&lt;/li&gt;
+		&lt;/ul&gt;
+
+		&lt;li&gt;li outside of ul/ol is not allowed&lt;/li&gt;
+	</code>
+	<code class="good">
+		&lt;div&gt;
+			&lt;span&gt;Wrap the inline element in a block element instead.&lt;/span&gt;
+		&lt;/div&gt;
+
+		&lt;ul&gt;
+			&lt;li&gt;&lt;div&gt;Item 1 (div inside li is OK)&lt;/div&gt;&lt;/li&gt;
+			&lt;li&gt;Item 2&lt;/li&gt;
+		&lt;/ul&gt;
+
+		&lt;div&gt;li outside of ul/ol is not allowed&lt;/div&gt;
+	</code>
+</code-block>
+
+					<h3>Keep nesting depth to a minimum</h3>
+					<p>Don't overuse tags while nesting. A common example includes that of multiple nested divs, use of <code>span</code> inside <code>p</code> for a label, etc.</p>
+<code-block>
+	<code class="bad">
+		&lt;div class="wrapper"&gt;
+			&lt;div&gt;
+				&lt;p&gt;
+					&lt;span&gt;Extra elements makes the code messy&lt;/span&gt;
+				&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	</code>
+	<code class="good">
+		&lt;div class="wrapper"&gt;
+			&lt;p&gt;Avoid extra div's.&lt;/p&gt;
+		&lt;/div&gt;
+	</code>
+</code-block>
+
+					<h3>ALWAYS run your code through W3C validator</h3>
+					<p>Validating your code will give you a quick list of any of the violations as per the web standards.</p>
+
+					<!-- CSS Best Practices -->
+					<h2 id="css">CSS</h2>
+
+					<h3>Keep your code <em>clean &amp; clear</em></h3>
+					<p>Strictly maintain proper indentation and spacing for the selectors and their rules.</p>
+					<p>One indentation = 1 tab/4 spaces, no more, no less.</p>
+					<p>Remove unwanted whitespaces and new lines.</p>
+
+					<h3>Avoid putting everything in a single line</h3>
+					<p>Writing each selectors and each declarations in separate lines promotes readability and makes it easier to debug.</p>
+<code-block>
+	<code class="bad">
+		nav ul li {font-size:15px;font-weight: bold; }
+	</code>
+	<code class="good">
+		nav ul li {
+		  font-size: 15px;
+		  font-weight: bold;
+		}
+	</code>
+</code-block>
+
+					<h3>Make efficient use of selectors</h3>
+					<h4>Keep specificity to a minimum</h4>
+					<p>Specificity is the order of the CSS rules in which they will be applied.</p>
+					<p>A CSS selector with higher specificity overrides the one with lower specificity. Only the conflicting properties are overridden by the higher specific selector. If the selectors have equal specificity, the one which was declared at the last is the winner.</p>
+					<ol>
+						<li><b>Ids</b> selector has a specificity of <b>100</b></li>
+						<li><b>Classes, pseudo-classes, attributes</b> selectors have a specificity of <b>10</b></li>
+						<li><b>Elements, pesudo-elements</b> selectors have a specificity of <b>1</b></li>
+						<li><b>Universal selector(*)</b> has a specificity of <b>0</b></li>
+					</ol>
+					
+					<table>
+						<tr>
+							<th>Rule</th>
+							<th>Specificity</th>
+						</tr>
+						<tr>
+							<td><code>p</code></td>
+							<td>001</td>
+						</tr>
+						<tr>
+							<td><code>div p</code></td>
+							<td>002</td>
+						</tr>
+						<tr>
+							<td><code>.name p</code></td>
+							<td>011</td>
+						</tr>
+						<tr>
+							<td><code>#content</code></td>
+							<td>100</td>
+						</tr>
+						<tr>
+							<td><code>body #content .name p.title a:hover</code></td>
+							<td>133</td>
+						</tr>
+						<tr>
+							<td><code>body [id=content] .name p:first-line</code></td>
+							<td>023</td>
+						</tr>
+						<tr>
+							<td><code>body #content p:not(.title)</code></td>
+							<td>112</td>
+						</tr>
+					</table>
+
+<code-block>
+	<code class="bad">
+		body #content div.name p.title {
+			color: red;
+			font-size: 15px;
+		}
+	</code>
+	<code class="good">
+		.name .title {
+			color: red;
+			font-size: 15px;
+		}
+	</code>
+</code-block>
+
+					<p>Note:</p>
+					<ul>
+						<li>:not() is a pseudo-class but it doesn't add any specificity on its own, but what is inside its parantheses does.</li>
+						<li>Inline styles override any order of specificity. Think of its value as 1000.</li>
+						<li>Inline styles can only be overridden by the use of !important. Think of its value as 10000.</li>
+					</ul>
+					
+					<h4>Avoid using #id</h4>
+					<p>Id has a specificity of 100, thus to override this selector, we are forced to use id again increasing the complexity and decreasing the performance. Id should be introduced only if absolutely necessary.</p>
+<code-block>
+	<code class="bad">
+		#quantity {
+			border: 1px solid gray;
+			font-size: 15px;
+		}
+	</code>
+	<code class="good">
+		.quantity {
+			border: 1px solid gray;
+			font-size: 15px;
+		}
+	</code>
+</code-block>
+					<h4>Avoid using !important</h4>
+					<p>Using !important is always a bad idea for the very same reason as using Id. Try increasing specificity to achieve the same result by adding classes or element tags.</p>
+					<p> To override !important, we will need another !important with greater specificity. We should always try to remove the !important from our code.</p>
+<code-block>
+	<code class="bad">
+		.label {
+			color: red;
+			font-size: 15px;
+		}
+		ul li {
+			color: green !important;
+			font-size: 18px !important;
+		}
+	</code>
+	<code class="good">
+		.label {
+			color: red;
+			font-size: 15px;
+		}
+		ul li.label {
+			color: green;
+			font-size: 18px;
+		}
+	</code>
+</code-block>
+
+					<h3>Use shorthand properties</h3>
+					<p>Merge different lines into shorthand.</p>
+					<p>Avoid unnecessary shorthand.</p>
+<code-block>
+	<code class="bad">
+		p {
+			margin-top: 10px;
+			margin-right: 20px;
+			margin-bottom: 10px
+			margin-left: 20px;
+			padding: 5px 0px 0px 0px;
+		}
+	</code>
+	<code class="good">
+		p {
+			margin: 10px 20px;
+			padding-top: 5px;
+		}
+	</code>
+</code-block>
+					<p>Drop units when using a zero(0) value.</p>
+<code-block>
+	<code class="bad">
+		p {
+			padding: 5px 0px 0px 0px;
+		}
+	</code>
+	<code class="good">
+		p {
+			padding: 5px 0 0 0;
+		}
+	</code>
+</code-block>
+
+					<h3>Use vendor prefix for newer CSS3 properties</h3>
+					<p>Adding vendor prefixes will support for a wide range of browsers and devices.</p>
+<code-block>
+	<code class="bad">
+		.animate {
+			transition: all 2s linear;
+		}
+	</code>
+	<code class="good">
+		.animate {
+			-webkit-transition: all 2s linear;
+			-moz-transition: all 2s linear;
+			-ms-transition: all 2s linear;
+			-o-transition: all 2s linear;
+			transition: all 2s linear;
+		}
+	</code>
+</code-block>
+
+					<h3>Reuse styles and remove duplicacy</h3>
+					<p>Identify the generic styles which can be used in future also and make it a global style.</p>
+<code-block>
+	<code class="bad">
+		.size {
+			padding-top: 5px;
+		}
+		.color {
+			padding-top: 5px;
+		}
+	</code>
+	<code class="good">
+		.padTop_5 {padding-top: 5px;}
+	</code>
+</code-block>
+
+<code-block>
+	<code class="bad">
+		.padTop_8 {padding-top: 8px;}
+	</code>
+	<code class="good">
+		.qunatity {
+			padding-top: 8px;
+		}
+	</code>
+</code-block>
+					<p>Decrease redundancy by merging selectors which have similar rules</p>
+<code-block>
+	<code class="bad">
+		.error {
+			border: 1px solid red;
+			color: red;
+			font-size: 15px;
+			text-transform: lowercase;
+		}
+		.success {
+			border: 1px solid green;
+			color: green;
+			font-size: 15px;
+			text-transform: lowercase;
+		}
+	</code>
+	<code class="good">
+		.error, .success {
+			border: 1px solid black;
+			font-size: 15px;
+			text-transform: lowercase;
+		}
+		.error {
+			border-color: red;
+			color: red;
+		}
+		.success {
+			border-color: green;
+			color: green;
+		}
+	</code>
+</code-block>
+					<p>Take advantage of frameworks such as Bootstrap which provides a boilerplate with a wide range of design templates, components, plugins, reset(normalize.css), etc. to ensure cross-browser compatibility and remove any inconsistencies. Using a grid system eliminate the need of new styles and helps to maintain consistency through the code. They are also helpful for the development of mobile-first and responsive design by the use of predefined classes.</p>
+
+
+					<h3>Reduce the number of image requests to the server</h3>
+					<p>Use sprites - add smaller images/icons in a sprite</p>
+<code-block>
+	<code class="bad">
+		.cart-icon {
+			background: url('../img/cart-icon.png') no-repeat;
+		}
+		.zoom-icon {
+			background: url('../img/zoom-icon.png') no-repeat;
+		}
+	</code>
+	<code class="good">
+		.cart-icon {
+			background: url('../img/sprite-icon.png') no-repeat;
+			background-position: 10px 10px;
+		}
+		.zoom-icon {
+			background: url('../img/sprite-icon.png') no-repeat;
+			background-position: 10px 50px;
+		}
+	</code>
+</code-block>
+					<p>Remove duplicate image request. Make sure an individual image request is sent only once per page.</p>
+<code-block>
+	<code class="bad">
+		.cart-icon {
+			background: url('../img/sprite-icon.png') no-repeat;
+			background-position: 10px 10px;
+			height: 20px;
+		}
+		.zoom-icon {
+			background: url('../img/sprite-icon.png') no-repeat;
+			background-position: 10px 50px;
+			height: 20px;
+		}
+	</code>
+	<code class="good">
+		.icons {
+			background: url('../img/sprite-icon.png') no-repeat;
+		}
+		.cart-icon {
+			background-position: 10px 10px;
+			height: 20px;
+		}
+		.zoom-icon {
+			background-position: 10px 50px;
+			height: 20px;
+		}
+	</code>
+</code-block>
+
+
+					<!-- JS Best Practices -->
+					<h2 id="javascript">JS</h2>
+					<h3> A. Structure</h3>
+					<h3>Keep your code <em>clean &amp; clear</em></h3>
+					<p>Strictly maintaining proper indentation and spacing helps to organize the code in a more readable manner.</p>
+					<p>One indentation = 1 tab/4 spaces, no more, no less.</p>
+					<p>Remove unwanted whitespaces/new lines.</p>
+					<code-block>
+						<code class="bad">
+							var add=function add(a,b){
+							var sum=0;
+							sum<span class="dot">.</span>=<span class="dot">.</span>a+b<span class="dot">.</span>;
+							return sum; 
+							}
+
+							add(3,<span class="dot">.</span><span class="dot">.</span>4);
+
+							$('body').on('click','#submit',function(){
+							    var a,b,c;
+							    if(pageName=='home'){
+							      a=1;	
+							    }else{
+							    	  a=2;
+							    };
+							    $.ajax({    
+						    	dataType:'json',
+						    	method<span class="dot">.</span>:<span class="dot">.</span><span class="dot">.</span>'GET',
+						    	cache<span class="dot">.</span><span class="dot">.</span>:<span class="dot">.</span><span class="dot">.</span>false,
+							    	success:<span class="dot">.</span>function(data) 
+							    	{
+							    		console.log('success');
+							    	},
+							    		error<span class="dot">.</span>:<span class="dot">.</span>function()      
+							    		 	{
+							    		 				console.log('Error !');
+							    		 	},
+							    	url<span class="dot">.</span>:<span class="dot">.</span>'app/getData'
+							    })
+							})
+						</code>
+						<code class="good">
+							var add<span class="dot">.</span>=<span class="dot">.</span>function add(a,<span class="dot">.</span>b)<span class="dot">.</span>{
+								var sum<span class="dot">.</span>=<span class="dot">.</span>0;
+								sum<span class="dot">.</span>=<span class="dot">.</span>a<span class="dot">.</span>+<span class="dot">.</span>b;
+								return sum;
+							}
+
+							add(3,<span class="dot">.</span>4);
+
+							$('body').on('click',<span class="dot">.</span>'#submit',<span class="dot">.</span>function()<span class="dot">.</span>{
+								var a,<span class="dot">.</span>b,<span class="dot">.</span>c;
+								if<span class="dot">.</span>(pageName<span class="dot">.</span>==<span class="dot">.</span>'home')<span class="dot">.</span>{
+									a<span class="dot">.</span>=<span class="dot">.</span>1;
+								}<span class="dot">.</span>else<span class="dot">.</span>{
+									a<span class="dot">.</span>=<span class="dot">.</span>2;
+								};
+								$.ajax({
+									url:<span class="dot">.</span>'app/getData',
+									dataType:<span class="dot">.</span>'json',
+									method:<span class="dot">.</span>'GET',
+									cache:<span class="dot">.</span>false,
+									success:<span class="dot">.</span>function(data)<span class="dot">.</span>{
+										console.log('success');
+									},
+									error:<span class="dot">.</span>function()<span class="dot">.</span>{
+										console.log('Error!');
+									}
+								})
+							})
+						</code>
+					</code-block>
+
+
+					<h3>Don't use short-cut with syntax</h3>
+					<p>Don't omit the braces in <code>if-else, while, for </code> blocks.</p>
+					<p>Always end statements with a semi-colon.</p>
+					<p>Don't put semi-colon at unnecessary positions, like after <code>if, for</code> blocks.</p>
+					<code-block>
+						<code class="bad">
+							var add = function add(a, b) {
+								var sum = 0;
+								sum = a + b;
+								return sum;
+							}
+
+							add(3, 4);
+
+							$('body').on('click', '#submit', function() {
+								var a, b, c;
+								if (pageName == 'home')
+									a = 1
+								else
+									a = 2
+
+								$.ajax({
+									url: 'app/getData',
+									dataType: 'json',
+									method: 'GET',
+									cache: false,
+									success: function(data) {
+										console.log('success');
+									},
+									error: function() {
+										console.log('Error!');
+									}
+								})
+							})
+						</code>
+						<code class="good">
+							var add = function add(a, b) {
+								var sum = 0;
+								sum = a + b;
+								return sum;
+							};
+
+							add(3, 4);
+
+							$('body').on('click', '#submit', function() {
+								var a, b, c;
+								if (pageName == 'home') {
+									a = 1;
+								} else {
+									a = 2;
+								}
+
+								$.ajax({
+									url: 'app/getData',
+									dataType: 'json',
+									method: 'GET',
+									cache: false,
+									success: function(data) {
+										console.log('success');
+									},
+									error: function() {
+										console.log('Error!');
+									}
+								});
+							});
+						</code>
+					</code-block>
+
+					<h3>Follow proper naming conventions</h3>
+					<p>Names should be meaningful and easily understandable by others.</p>
+					<p>Avoid using too long or too short names or abbrevations.</p>
+					<p>Always use <b>camelCase</b> for variables, identifiers, functions and objects and <b>PascalCase</b> for constructors</p>
+					<p>Name for a jQuery object should start with '<b>$</b>'.</p>
+					<code-block>
+						<code class="bad">
+							var fl1;
+							var Fl_2;
+							var flagforsomethingcool;
+							var _ToDo_Something_Awesome;
+							var ref;
+							var isABC;
+							var pageid = $('#pageId');
+
+							function personDetails(name, age) {
+								this.name = name;
+								this.age = age;
+							}
+							var a = new personDetails('John', 20);
+						</code>
+						<code class="good">
+							var someFlag;
+							var otherFlag;
+							var coolFlag;
+							var awesome;
+							var reference;
+							var isAbc;
+							var $pageId = $('#pageId');
+
+							function PersonDetails(name, age) {
+								this.name = name;
+								this.age = age;
+							}
+							var a = new PersonDetails('John', 20);
+						</code>
+					</code-block>
+
+					<h3>B. Bad Practices and Better Design</h3>
+					<h3>Avoid using global variables</h3>
+					<p>Variables declared outside of a function are attached to the global scope. Additionally, variables used without declaring it first, i.e. without using <code>var</code> keyword, whether it is inside or outside any function makes it a global variable.</p>
+					<p>Global variables are extremely risky as they can used or modified by any part of the code or some other third party's code, either intentionally or un-intentionally.</p>
+					<p>Always declare the variables locally by using <code>var</code> keyword. Namespacing, closures, self-executing immediate functions are helpful in resolving clashing of variables and minimize global variables clutter.</p>
+					<code-block>
+						<code class="bad">
+							var pageId = 100;
+
+							function init() {
+								var pageName = 'home';
+								pageId = 200;
+								count = 1;
+								console.log(pageId);   // 200
+							}
+							init();
+
+							console.log(pageId);    // 200
+							console.log(count);     // 1
+							console.log(pageName);  // not defined
+						</code>
+						<code class="good">
+							var MYAPP = MYAPP || {};
+							MYAPP.pageId = 100;
+
+							MYAPP.init = function() {
+								var pageName = 'home';
+								var pageId = 200;
+								var count = 1;
+								console.log(pageId);   // 200
+							}
+							MYAPP.init();
+
+							console.log(pageId);        // not defined
+							console.log(MYAPP.pageID);  // 100
+							console.log(count);         // not defined
+							console.log(pageName);      // not defined
+						</code>
+					</code-block>
+
+					<h3>Proper variable decalaration</h3>
+					<p>Declare all of the variables at the starting of the functions and preferably assign some initial value. Hoisting?</p>
+					<p>Avoid redeclartions of the variables</p>
+					<p>Never declare variables inside a block</p>
+					<p>Single var vs multiple var statements</p>
+					<code-block>
+						<code class="bad">
+							function calculator(operation, a, b) {
+								var a = a || null;
+								var b = b || null;
+
+								if (operation === '+') {
+									var result = a + b;
+								} else if (operation === '*') {
+									var result = a * b;
+								}
+								
+								var c = operation;
+
+								return result;
+							}
+						</code>
+						<code class="good">
+							function calculator(operation, a, b) {
+								a = a || null;
+								b = b || null;
+
+								var result = 0,
+								    c = operation;
+
+								if (operation === '+') {
+									result = a + b;
+								} else if (operation === '*') {
+									result = a * b;
+								}
+
+								return result;
+							}
+						</code>
+					</code-block>
+
+					<h3>Always use === instead of ==</h3>
+					<p>Using === make sure that you are comparing the values of similar types. This will prevent the some weird quirks of type casting when '==' is used. There is no need to compare values of different types and if you found such scenarios, re-visit the logic behind it.</p>
+					<p>Use caution while converting == to === when</p>
+					<ul>
+						<li>Comparing string and number, use parseInt() / parseFloat() to convert the string into number before comparsion</li>
+						<li>Comparing null and undefined, either use both or better use <a href="#truthy">truthy/falsy values for comparison</a></li>
+					</ul>
+					<p><a href="#abstract-vs-strict-equality">Diff between == and ===</a></p>
+					<code-block>
+						<code class="bad">
+							1 == '1'           // true
+							false == '0'       // true
+							true == 'true' 
+							null == undefined
+
+
+							count = $('#count').val();
+							count == 1
+						</code>
+						<code class="good">
+							1 === '1'          // false
+							false === '0'      // false
+							true === 'true'
+							null === undefined
+
+							count = parseInt($('#count').val(), 10);
+							count == 1
+						</code>
+					</code-block>
+
+					<h3>eval() === evil()</h3>
+					<p>Never use eval() as it execute the arbitrary string as a code, raising the risk of serious security issues.</p>
+					
+					<h3>Never pass string in <code>setTimeout</code> or <code>setInterval</code></h3>
+					<p>Passing string in <code>setTimeout</code> or <code>setInterval</code> works in the sense as eval(). Always pass function as the parameter.</p>
+					<code-block>
+						<code class="bad">
+							setTimeout("document.getElementById('name').style.color = 'red';", 500);
+						</code>
+						<code class="good">
+							setTimeout(function() {
+								document.getElementById('name').style.color = 'blue';
+							}, 500);
+						</code>
+					</code-block>
+
+					<h3>Optimize assignments</h3>
+					<p>Use shorthand notation/short-circuit assignment for variable declaration and to have a default value.</p>
+					<p>Don't use the new operator for declaring the types (String, Boolean, Number, Object, Array, Function, RegExp)</p>
+					<p>Use ternary operator.</p>
+					<code-block>
+						<code class="bad">
+							var name = new String('John');
+							var age = new Number(20);
+							var obj = new Object();
+							var arr1 = new Array();
+							var arr2 = new Array(10, 20, 'test');
+
+							function(choice, val) {
+								var a;
+								if (choice === 'a') {
+									a = 1;
+								} else {
+									a = 2;
+								}
+
+								if (val === undefined || val === null) {
+									val = 0;
+								}
+							}							
+						</code>
+						<code class="good">
+							// Don't use new operator
+							var name = 'John';
+							var age = 20;
+							var obj = {};
+							var arr1 = [];
+							var arr2 = [10, 20, 'test'];
+
+							function(choice, val) {
+								// Use ternary operator
+								var a = choice === 'a' ? 1 : 2;
+
+								// Use short-circuit assignment
+								val = val || 0;
+							}
+						</code>
+					</code-block>
+					
+
+					<h3>C. Performance</h3>
+					<p>Areas for performance improvement</p>
+					<ul>
+						<li>Looping</li>
+						<li>DOM manipulation</li>
+						<li>Event binding/firing</li>
+						<li>HTTP requests</li>
+					</ul>
+
+					<h3>Looping</h3>
+					<p>Avoid looping where it is not necessary</p>
+					<p>Avoid doing repetitive or heavy computaion tasks in the loop which can be done outside the loop.</p>
+					<ul>
+						<li>Avoid DOM manipulation inside loops - reading from DOM or wrting into DOM</li>
+						<li>Move all the decalrations before starting the loop and the end result after the loop is closed</li>
+					</ul>
+					<code-block>
+						<code class="bad">
+							for (var i = 0; i < arr.length; i++) {
+							    var wrapper = document.getElementById('wrapper');
+							    wrapper.innerHTML += '&lt;li&gt; arr[' + i + ']: ' + arr[i] + '&lt;/li&gt;';
+							}
+						</code>
+						<code class="good">
+							var len = arr.length,
+							    wrapper = document.getElementById('wrapper'),
+							    temp = '',
+							    i;
+
+							for (i = 0; i < len; i++) {
+							    temp += '&lt;li&gt; arr[' + i + ']: ' + arr[i] + '&lt;/li&gt;';
+							}
+
+							wrapper.innerHTML += temp;
+						</code>
+					</code-block>
+
+					<h3>DOM Manipulation</h3>
+					<p>DOM manipulation is a heavy task and has a lot of performance impact.</p>
+
+					<p>Optimize the query for selectors. Start with id attribute if possible and then move your way down to elements, class and so on.</p>
+					<p>Multiple id selector in a single query is useless. Also, query the id selector alone and chain other selectors.</p>
+					<code-block>
+						<code class="bad">
+							$('#first #second')...
+							$('#first .class1')...
+						</code>
+						<code class="good">
+							$('#second')...
+							$('#first').find('.class1')...
+						</code>
+					</code-block>
+
+					<p>While selecting some DOM node which can be used later, make sure to <em>Cache</em> it. This will save time to re-select the DOM when querying it next time.</p>
+					<code-block>
+						<code class="bad">
+							$('#first').addClass('one');
+							$('#first').addClass('two');
+							$('#first').removeClass('three');
+						</code>
+						<code class="good">
+							var $first = $('#first');
+							$first.addClass('one');
+							$first.addClass('two');
+							$first.removeClass('three');
+						</code>
+					</code-block>
+
+					<p><b>Chaining</b> can be also be used to invrease performance.</p>
+					<code-block>
+						<code class="bad">
+							var $first = $('#first');
+							$first.addClass('one');
+							$first.addClass('two');
+							$first.removeClass('three');
+						</code>
+						<code class="good">
+							var $first = $('#first');
+							$first.addClass('one two').removeClass('three');
+						</code>
+					</code-block>
+
+					<h3>Event Binding</h3>
+					<p>Event binding can be stacked, i.e. if there are multiple event handlers for same event on the same DOM node, event will fire for each of the stacked event handler.</p>
+					<p>Avoid Event binding in a loop, function or callbacks. As each time the function will be called event binding will be stacked.</p>
+					<code-block>
+						<code class="bad">
+							function random() {
+								$('.link').on('click', function() {
+									// handler
+								});
+							}
+						</code>
+						<code class="good">
+							function random() {
+								
+							}
+							$('.link').on('click', function() {
+								// handler
+							});
+						</code>
+					</code-block>
+
+					<p>Try delegating the events so that they can still work for dynamically added DOM nodes like that added after ajax call.</p>
+					<code-block>
+						<code class="bad">
+							$('.link').on('click', function() {
+								// handler
+							});
+						</code>
+						<code class="good">
+							$('body').on('click', '.link', function() {
+								// handler
+							});
+						</code>
+					</code-block>
+
+					<h3>HTTP requests</h3>
+					<p>HTTP requests should be kept to a minimum as they have overhead of moving back and forth to server. This includes requests for images, stylesheets, js and ajax calls. Browsers also cache these files</p>
+					<p>Minifiy and concatenate css and js files. Use sprties to reduce image requests.</p>
+					<p>Avoid unneccessary ajax calls.</p>
+
+					<h3>Reduce Redundant code</h3>
+					<p>Modularize your code. Try to break a large and/or nested function into multiple smaller functions.</p>
+					<p>Take out similar code out of <code>if-else</code> block.</p>
+					<code-block>
+						<code class="bad">
+							function doSomething() {
+								// some code
+								if (conditon) {
+									// executes when condition evaluates to true
+									
+									.
+									.
+									.
+
+									// similar set of statements
+									statement 1;
+									statement 2;
+									statement 3;
+								} else {
+									// executes when condition evaluates to false
+									
+									.
+									.
+									.
+
+									// similar set of statements
+									statement 1;
+									statement 2;
+									statement 3;
+								}
+							}
+						</code>
+						<code class="good">
+							function doSomething() {
+								// some code
+								if (conditon) {
+									// executes when condition evaluates to true
+									
+									.
+									.
+									.
+								} else {
+									// executes when condition evaluates to false
+									
+									.
+									.
+									.
+								}
+
+								// move the statments out of if-else block
+								statement 1;
+								statement 2;
+								statement 3;
+							}
+						</code>
+					</code-block>
+
+					<p>Try to bundle similar set of instruction into a function which can be used on later wherever needed.</p>
+					<code-block>
+						<code class="bad">
+							function doSomething() {
+								// some code
+								if (conditon) {
+									// executes when condition evaluates to true
+								} else {
+									// executes when condition evaluates to false
+								}
+
+								// similar code
+								statement 1;
+								statement 2;
+								statement 3;
+							}
+
+							function anothertask() {
+								// ajax call
+
+								// similar code
+								statement 1;
+								statement 2;
+								statement 3;
+							}
+						</code>
+						<code class="good">
+							function similarTask() {
+								statement 1;
+								statement 2;
+								statement 3;
+							}
+
+							function doSomething() {
+								// some code
+								if (conditon) {
+									// executes when condition evaluates to true
+								} else {
+									// executes when condition evaluates to false
+								}
+
+								similarTask()
+							}
+
+							function anothertask() {
+								// ajax call
+
+								similarTask()
+							}
+						</code>
+					</code-block>
+
+					<h3>D. Misc </h3>
+					<h4 id="hoisting">Scoping and Hoisting</h4>
+					<p>Javascript unlike other languages don't have a block scope, it has a functional scope. This means that var decalred inside a block don't loose scope when the block is closed. A local scope is only made inside a function.</p>
+					<code-block>
+						<code class="bad">
+							var val = 1;
+
+							if (val > 5) {
+								var str1 = 'Pass';
+							} else {
+								var str2 = 'Fail';
+							}
+							console.log(str1);		// undefined
+							console.log(str2);		// Fail
+							console.log(str3);		// not defined | Reference Error
+						</code>
+						<code class="good">
+							var val = 1;
+
+							function check() {
+								if (val > 5) {
+									var str1 = 'Pass';
+								} else {
+									var str2 = 'Fail';
+								}
+								console.log(val)
+							}
+
+							check();
+							console.log(str1);		// undefined
+							console.log(str2);		// Fail
+							console.log(str3);		// not defined | Reference Error
+						</code>
+					</code-block>
+
+
+					<h4 id="abstract-vs-strict-equality">Difference between Abstract Equality (==) and Strict Equality (===) ? </h4>
+
+					<ol>
+						<li>=== compares <b>TYPE</b> and value</li>
+						<li>== compares <b>ONLY</b> value, not the type</li>
+					</ol>
+					
+					<p>Statement 1 is OK, but statement 2 is very much flawed. '==' also checks for the type of the operands. The difference is that '===' return false if the type do not match while '==' coerce the operands into similar types and then return the result similar to '==='.</p>
+
+					<p>A simplified version of Abstract Equality Comparison (a == b) for primitive values:</p>
+
+					<ol>
+						<li>If *Type(a) is same as Type(y), return the result of a === b</li>
+						<li>If a is null and b is undefined (or vice versa), return true</li>
+						<li>If either a or b is Boolean or String, convert them into Number and repeat from Step 1</li>
+						<li>Return false</li>
+					</ol>
+
+					<p>*Type(a) refers to the language type and it is different from typeof a.
+					The ECMAScript language types are Undefined, Null, Boolean, String, Symbol, Number, and Object.</p>
+
+					<pre><code>
+						false == '0'
+						Number(false) == Number('0')
+						0 == 0 // true
+
+						true == 'true'
+						Number(true) == Number('true')
+						1 == NaN // false
+					</code></pre>
+
+					<h4 id="truthy">Truthy/Falsy Values: </h4>
+					<p>There are 6 <b>falsy</b> values:</p>
+					<ol>
+						<li>false</li>
+						<li>0</li>
+						<li>''</li>
+						<li>null</li>
+						<li>undefined</li>
+						<li>NaN</li>
+					</ol>
+
+					<p>Any value that is not a falsy value, is a <b>truthy</b> value.</p>
+					<p>This inlcudes '0', 'false', {}, [], new Boolean(false), etc.</p>
+					<p>The condition of <code>if (cond) {} </code> block checks for truthy value, not the boolean true value.</p>
+					<code-block>
+						<code class="bad">
+							if (value !== null &amp;&amp; value !== undefined &amp;&amp; value !== '') {
+
+							}
+
+							if (value === null || value === undefined) {
+	
+							}
+						</code>
+						<code class="good">
+							if (value) {
+								// a shorthand but remember this will check for all falsy values
+								// so if value can be 0 or false, this should not be used
+							}
+
+							if (!value) {
+
+							}
+						</code>
+					</code-block>
+
+					<h4>Data Issues</h4>
+					<p>Check for possible data issues - operating on values of different types, missing values, wrong type values, etc.</p>
+					<p>Use parseInt or pasrseFloat while fetching numbers from DOM or ajax and some arithematic operation is intended on these values.</p>
+					<p>Use typeof operator to know the type of operand.</p>
+					<code-block>
+						<code class="bad">
+							var a = '10';
+							var b = '2';
+							var c = a + b;        // 102
+							b < a                 // false
+
+							if (flag == 'true' || flag == true)
+							if (flag.toLowerCase() == 'true')
+
+							if (value != null)
+							if (value == undefined)
+						</code>
+						<code class="good">
+							var a = parseInt('10');
+							var b = parseInt('2');
+							var c = a + b;        // 12
+							b < a                 // true
+
+							if (flag === true)
+							if (flag === 'true')
+
+							if (value !== null &amp;&amp; value !== undefined)
+							if (value === undefined || value === null)
+						</code>
+					</code-block>
+					
+					<h4>window.load vs $(window).load()</h4>
+					<p><code>$(window).load()</code> stacks the events while <code>window.load = function(){}</code> overrides the previous function handler, so always use the former.</p>
+
+					<h2 id="references">References</h2>
+					<ol>
+						<li><a href="http://www.w3schools.com/html/html5_syntax.asp">HTML(5) Style Guide</a></li>
+						<li><a href="https://css-tricks.com/specifics-on-css-specificity/">Specifics on CSS Specificity | CSS-Tricks</a></li>
+						<li><a href="https://github.com/rwaldron/idiomatic.js/">idiomatic.js</a></li>
+						<li><a href="http://jshint.com/contribute/">JSHint</a></li>
+					</ol>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/global.js"></script>
+
+	</body>
+</html>

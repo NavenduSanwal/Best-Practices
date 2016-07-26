@@ -1,4 +1,6 @@
-# hello-world
-Sample repository for testing
+## Best Practices and Project Guidelines
 
-Adding another line
+Documenting some of the best practices for HTML, CSS and Javascript.
+
+It also list the project guidelines and some of the common mistakes that can be seen in a project.
+

@@ -1,0 +1,131 @@
+/* Base */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/* global rules */
+.posFixed {position: fixed;}
+.hide {display: none;}
+.invisible {visibility: hidden;}
+
+
+/* column layout */
+.table {
+  border-collapse: separate;
+  display: table;
+}
+.row {
+  display: table-row;
+}
+.col {
+  display: table-cell;
+  padding: 20px;
+}
+
+
+/* css for page */
+blockquote {
+  text-align: center;
+}
+blockquote p {
+  font: italic bold 24px Times;
+}
+
+.container aside {
+  background: #f1f1f1;
+  width: 300px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+aside nav {
+  top: 0px;
+}
+nav ul {
+  list-style-type: none;
+  max-width: 200px;
+}
+nav ul li {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  word-wrap: break-word;
+}
+nav ul li a {
+  color: #00f;
+}
+nav ul li a:hover {
+  color: blue;
+}
+
+h1 {
+  text-align: center;
+}
+h2 {
+  color: blue;
+}
+p {
+  font-size: 16px;
+}
+section p {
+  margin: 3px 0;
+}
+table {
+  border-spacing: 10px;
+}
+a {
+  text-decoration: none;
+}
+
+
+.half {
+  float: left;
+  width: 44%;
+}
+.half:first-child {
+  border-right: 1px solid #000;
+}
+.clear {
+  clear: left;
+}
+
+/* .holder {
+  clear: both;
+  overflow: hidden;
+  padding: 20px 0;
+}
+.holder code {
+  background-color: #ddd;
+  float: left;
+  white-space: pre-wrap;
+  width: 100%;
+  tab-size: 1;
+  -moz-tab-size: 1;
+  -o-tab-size: 1;
+}
+.holder .bad code {
+  background-color: #e8cdcd;
+}
+.holder .good code {
+  background-color: #ded;
+}
+.holder code:first-child {
+  border-right: 1px solid #444;
+} */
+
+.sin {
+  background-color: #ec7070;
+  color: #fff;
+  padding: 10px;
+}
+
+.dot {
+  color: red;
+}
